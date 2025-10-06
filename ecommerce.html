@@ -1,0 +1,230 @@
+[10/6, 11:29 AM] Priya (Usula)☺️🥰: <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet " href="/basiccode/style.css" type="text/css">
+  <title>E-Commerce Product Page</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <h1>🛍️ MyShop</h1>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Products</a>
+      <a href="#">Contact</a>
+      <a href="#">Cart (<span id="cart-count">0</span>)</a>
+    </nav>
+  </header>
+
+  <!-- Main Product Section -->
+  <main>
+    <section class="product">
+      <img src="/basiccode/images/headphone.png" alt="Product Image">
+      <h2>Wireless Headphones</h2>
+      <p><strong>Price:</strong> ₹999</p>
+      <p>Experience high-quality sound with noise cancellation and long battery life.</p>
+
+      <!-- Quantity Selector -->
+      <label for="quantity">Quantity:</label>
+      <input type="number" id="quantity" value="1" min="1">
+
+      <!-- Add to Cart Button -->
+      <button onclick="addToCart()">Add to Cart</button>
+    </section>
+  </main>
+
+  <!-- Related Products (Optional for Later) -->
+  <section class="related">
+    <h3>Related Products</h3>
+    <div class="related-items">
+      <div class="item">
+        <img src="/basiccode/images/Smartwatch.PNG" alt="Product 2">
+        <p>Smart Watch</p>
+      </div>
+      <div class="item">
+        <img src="/basiccode/images/speaker.png" alt="Product 3">
+        <p>Bluetooth Speaker</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 MyShop. All rights reserved.</p>
+  </footer>
+
+  <script src="/basiccode/script.js"></script>
+</body>
+</html>
+[10/6, 11:29 AM] Priya (Usula)☺️🥰: /* Reset styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+/* Header */
+header {
+  background-color: #333;
+  color: #fff;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header h1 {
+  font-size: 22px;
+}
+
+nav a {
+  color: white;
+  margin-left: 15px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav a:hover {
+  color: #ff9800;
+}
+
+/* Main Product Section */
+main {
+  display: flex;
+  justify-content: center;
+  padding: 40px;
+}
+
+.product {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  max-width: 350px;
+  text-align: center;
+  background: #fafafa;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.product img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.product h2 {
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.product p {
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+
+/* Quantity input */
+#quantity {
+  width: 60px;
+  padding: 5px;
+  margin: 10px 0;
+  text-align: center;
+}
+
+/* Button */
+button {
+  padding: 10px 15px;
+  background-color: #ff9800;
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+button:hover {
+  background-color:#333;
+}
+
+/* Related Products */
+.related {
+  padding: 30px;
+  text-align: center;
+}
+
+.related h3 {
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+
+.related-items {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.related .item {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+  width: 120px;
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  transition: 0.3s;
+}
+
+.related .item:hover {
+  transform: scale(1.05);
+}
+
+.related .item img {
+  width: 100%;
+  border-radius: 6px;
+  margin-bottom: 8px;
+}
+
+/* Footer */
+footer {
+  background: #333;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  margin-top: 40px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  main {
+    padding: 20px;
+  }
+
+  .related-items {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+[10/6, 11:29 AM] Priya (Usula)☺️🥰: let cartCount = 0;
+
+document.addEventListener("DOMContentLoaded", function() {
+    const addButton = document.getElementById("add-to-cart");
+    const cartCountSpan = document.getElementById("cart-count");
+    const quantityInput = document.getElementById("quantity");
+
+    addButton.addEventListener("click", function() {
+        const quantity = parseInt(quantityInput.value);
+
+        if (isNaN(quantity) || quantity < 1) {
+            alert("Please enter a valid quantity.");
+            return;
+        }
+
+        cartCount += quantity;
+        cartCountSpan.textContent = cartCount;
+
+        alert(quantity + " item(s) added to cart!");
+    });
+});
